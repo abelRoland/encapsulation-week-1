@@ -20,8 +20,8 @@ Project refactoring by [Abel Roland](github.com/abelroland)
 - [x] Create `readme.md`
 - [x] Create `backlog.md`
 - [x] Create `development-strategy.md`
-- [ ] Create `ToDo_Wireframe.png`
-- [ ] Create Project Board and issues
+- [x] Create `ToDo_Wireframe.png`
+- [x] Create Project Board and issues
 ---
 
 ## 1. Initialize Application
@@ -35,15 +35,15 @@ __As a user I want to add a item to my list__
 
 ### Task A
 
-- [] Creating (or refactoring) `index.html`
+- [x] Creating (or refactoring) `index.html`
 
 ### Task B
 
-- [] Creating `button` and `input` for add items.
+- [x] Creating `button` and `input` for add items.
 
 ### Task C
 
-- [] Creating `listener` and `handler` for add items.
+- [x] Creating `listener` and `handler` for add items.
 
 ---
 
@@ -58,11 +58,11 @@ __As a user I want to view the items that were added to my list__
 
 ### Task A
 
-- [] Creating (or refactoring) `render-todo.js`
+- [x] Creating (or refactoring) `render-todo.js`
 
 ### Task B
 
-- [] Creating `listener` and `handler` for add items.
+- [x] Creating `listener` and `handler` for add items.
 
 ---
 
@@ -77,11 +77,11 @@ __As a user I want to check the items that were added to my list__
 
 ### Task A
 
-- [] Creating `handler.js`
+- [ ] Creating `handler.js`
 
 ### Task B
 
-- [] Creating `listener` and `handler` for check items.
+- [ ] Creating `listener` and `handler` for check items.
 
 ---
 
@@ -96,7 +96,7 @@ __As a user I want to delete the items that were in my list__
 
 ### Task A
 
-- [] Creating `listener` and `handler` for delete items.
+- [ ] Creating `listener` and `handler` for delete items.
 
 ---
 
@@ -111,6 +111,6 @@ __As a user I want to see a beautiful UI, so it makes the UX more intuitive and 
 
 ### Task A
 
-- [] Edit `style.css`.
+- [ ] Edit `style.css`.
 
 ---

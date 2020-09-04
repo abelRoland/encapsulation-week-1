@@ -1,4 +1,5 @@
 const renderTodos = (todosArr) => {
+  
   const ulEl = document.createElement('ul');
 
   for (const todo of todosArr) {

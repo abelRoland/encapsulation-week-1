@@ -2,8 +2,8 @@
 <html lang='en'>
 
 <head>
-  <meta charset='utf8'>
-  <title></title>
+  <meta charset='utf-8'>
+  <title>To-Do Refactored</title>
 
   <link href="./style.css" rel="stylesheet" />
 
@@ -12,7 +12,10 @@
 <body>
 
   <div id='root'></div>
-
+  <form id='input-form'>
+    <input type="text" id='text-to-add' />
+    <button type="button" id='submit-value' >Add to List</button>
+</form> 
   <!-- load the testing & reviewing dependencies -->
   <script src='../lib/gremlins.js'></script>
   <script src='../lib/chai-and-chai-dom.js'></script>
@@ -36,6 +39,10 @@
   <!-- initialize the web page -->
   <script src='../src/data.js'></script>
   <script src='../src/init.js'></script>
+  <script>
+    document.getElementById('submit-value').addEventListener('click', addTodo);
+  //  document.getElementById('submit-value').addEventListener('click', displayNew)
+  </script>
 </body>
 
 </html>
