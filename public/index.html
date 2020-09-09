@@ -11,7 +11,10 @@
 
 <body>
 
-  <div id='root'></div>
+  <div id='root'>
+    <ul class="added">
+    </ul>
+  </div>
   <form id='input-form'>
     <input type="text" id='text-to-add' />
     <button type="button" id='submit-value' >Add to List</button>
@@ -31,18 +34,15 @@
   <!-- load your views -->
   <script src='../src/views/render-todos.js'></script>
 
-
   <!-- load your handlers -->
   <script src='../src/handlers/toggle-completed.js'></script>
-
 
   <!-- initialize the web page -->
   <script src='../src/data.js'></script>
   <script src='../src/init.js'></script>
-  <script>
-    document.getElementById('submit-value').addEventListener('click', addTodo);
-  //  document.getElementById('submit-value').addEventListener('click', displayNew)
-  </script>
+  <script id='listeners'>
+    document.getElementById('submit-value').addEventListener('click', handlers.addTodos);
+   </script>
 </body>
 
 </html>

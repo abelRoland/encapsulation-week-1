@@ -1,48 +1,62 @@
-'use strict';
+var handlers = {
+  addTodos: function (e) {
+    debugger;
+    e = e || window.event;
+    e.preventDefault();
+    var add = document.getElementById("text-to-add").value;
+    if (add === "") {
+      alert("Please write a Todo!");
+      return;
+    }
+    app.addTodo(add);
+    view.displayTodos();
 
-const addTodo = () => {
-  const input = document.getElementById('text-to-add').value;
-  initialState.setTodo(input);
-  console.log(initialState.todos)
+    logger.push({
+      action: "Add Todo",
+      state: app.state,
+    });
+    document.getElementById("add").value = "";
+  },
+  
+  deleteTodo: function (position) {
+    debugger;
+    app.deleteTodo(position);
+    view.displayTodos();
 
-  // update UI from state
-
-  // re-render the average
-  const listContainer = document.getElementById('root');
-      while (listContainer.firstChild) {
-        listContainer.removeChild(listContainer.firstChild);
+    logger.push({
+      action: "Delete Todo ",
+      state: app.state,
+    });
+  },
+  toggleCompleted: function () {
+    debugger;
+    var address = document.querySelector("ul");
+    var toggleCompletedPo = address.childNodes;
+    toggleCompletedPo.forEach(function (child) {
+      if (child.childNodes[0].checked === true) {
+        var input = child.id;
+        app.toggleCompleted(Number(input));
+        child.className = "checkbox";
       }
-      const renderList = renderTodos(initialState.todos);
-      document.getElementById('root').appendChild(renderList);
-      //listContainer.appendChild(renderList);
-      // log new view rendered from state
-      //logEntry.viewList = renderList;
-     };
+      if (child.childNodes[0].checked === false) {
+        child.className = "";
+        child.setAttribute("checked", false);
+      }
+    });
+    logger.push({
+      action: "toggle completed",
+      state: app.state,
+    });
+  },
+  toggleAll: function () {
+    app.toggleAll();
+    view.displayTodos();
 
-// render initial view and attach event listeners
-const displayNew = () => {
-  const todosView = renderTodos(app.state.todos);
-  todosView.addEventListener('change', toggleCompletedHandler); // event delegation!
-  document.getElementById('root').appendChild(todosView);
-
-}
-const toggleCompletedHandler = (event) => {
-
-  // event delegation!
-  const target = event.target;
-  if (target.nodeName !== 'INPUT' || target.type !== 'checkbox') {
-    return;
-  }
-
-  // update state using app method
-  const todoIndex = Number(target.id);
-  app.toggleCompleted(todoIndex);
-
-  logger.push({
-    action: 'toggle todo',
-    event,
-    todoIndex,
-    state: app.state
-  });
-
+    logger.push({
+      action: "toggle All",
+      state: app.state,
+    });
+  },
+  
 };
+  
