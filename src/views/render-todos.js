@@ -1,22 +1,12 @@
 const renderTodos = (todosArr) => {
-  
+ // debugger
   const ulEl = document.createElement('ul');
 
   for (const todo of todosArr) {
     const liEl = document.createElement('li');
-
-    const checkBoxEl = document.createElement('input');
-    checkBoxEl.type = 'checkbox';
-    if (todo.completed) {
-      checkBoxEl.setAttribute('checked', true);
-    }
-    checkBoxEl.id = todosArr.indexOf(todo);
-    liEl.appendChild(checkBoxEl);
-
     liEl.innerHTML += todo.text;
     ulEl.appendChild(liEl);
   }
-
   return ulEl;
 };
 
@@ -124,3 +114,58 @@ describe('renderTodos: renders a list of todos', () => {
     });
   });
 }, true);
+
+var view = {
+  displayTodos: function () {
+    //debugger;
+
+    var todosUl = document.querySelector('ul');
+    todosUl.innerHTML = '';
+
+    app.state.todos.forEach(function (todo, position) {
+      var todoLi = document.createElement('li');
+    
+      todoLi.id = position;
+      todoLi.innerHTML = `<input class= 'checkbox' type = 'checkbox' onclick = 'handlers.toggleCompleted()'>${todo.text}</input>`;
+
+      todoLi.appendChild(this.createDeleteButton());
+
+      if (todo.completed) {
+        let checkBoxEl = todoLi.children[0];
+        checkBoxEl.setAttribute('checked', true);
+        if (todo.completed === true) {
+          todoLi.className = 'checkbox';
+
+        }
+      }
+
+      todosUl.appendChild(todoLi);
+    }, this);
+
+  },
+  createDeleteButton: function () {
+    var deleteButton = document.createElement('button');
+    deleteButton.innerHTML = 'X';
+    deleteButton.className = 'destroy';
+    return deleteButton;
+
+
+  },
+  setUpEventListeners: function () {
+   // debugger;
+    var todosUl = document.querySelector('ul');
+    todosUl.addEventListener('click', function (event) {
+      var clicked = event.target;
+      if (clicked.className === 'destroy') {
+        handlers.deleteTodo(parseInt(clicked.parentNode.id));
+
+      }
+
+    });
+  }
+
+};
+
+view.setUpEventListeners();
+
+

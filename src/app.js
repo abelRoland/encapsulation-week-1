@@ -29,12 +29,42 @@ const app = {
   set state(newState) {
     this._state = newState
   },
+   addTodo(text) {
+       this._state.todos.push({
+         text: text,
+         completed: false
+       })
+      },
 
-  toggleCompleted: function (position) {
-    if (position < 0 || this._state.todos.length <= position) {
-      return;
-    }
-    const todo = this._state.todos[position];
-    todo.completed = !todo.completed;
+    deleteTodo(position) {
+      this._state.todos.splice(position, 1);
+    },
+
+    toggleCompleted: function (position) {
+      if (position < 0 || this._state.todos.length <= position) {
+        return;
+      }
+      const todo = this._state.todos[position];
+      todo.completed = !todo.completed;
+    },
+  toggleAll() {
+    var totalTodos = this.state.todos.length;
+    var completedTodos = 0;
+    this.state.todos.forEach(function (todo) {
+      if (todo.completed === true) {
+        completedTodos++;
+      }
+    });
+    if (completedTodos === totalTodos) {
+      this.state.todos.forEach(function (todo) {
+        todo.completed = false;
+      });
+
+    } else {
+      this.state.todos.forEach(function (todo) {
+        todo.completed = true;
+      })
+    };
+
   }
 }
